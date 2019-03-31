@@ -1,7 +1,7 @@
 <?php
 
 define("baseDIR",dirname(__FILE__));
-
+DEFINE('root', $_SERVER['DOCUMENT_ROOT']);
 if (isset($_GET["page"])){
     $get = $_GET["page"];
 }else{
@@ -18,7 +18,7 @@ function initialize($pageFullPath){
     }
     $method = null;
     $controllerFullPath = "Controllers/".$fragments[0]."Controller.php";
-    //echo $controllerFullPath;
+    echo $controllerFullPath;
     
         $controllerName = $fragments[0]."Controller";
         //echo count($fragments);
@@ -36,7 +36,6 @@ function initialize($pageFullPath){
                     $controller = new $controllerName();
                     $method = $fragments[1];
                     $controller->{$method}();
-
                 }else{
                     require_once "Views/404.php";
                 }
