@@ -1,5 +1,3 @@
-<?php
-?>
 <!DOCTYPE html>
 <html lang="hu">
 
@@ -9,11 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>EMAG</title>
+    <title>Emag</title>
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
           integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet" href="/Assets/Css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Assets/Css/style.css">
+
 </head>
 
 <body>
@@ -45,7 +45,16 @@
 
             </li>
             <li class="nav-item my-2 my-lg-0">
-                <a class="nav-link" href="#">Kosár</a>
+                <button type="button" class="btn btn-info" data-toggle="popover" data-placement="top" data-html="true"
+                        data-content="<?php
+                        foreach ($_SESSION["cart"] as $keys => $values) :
+                            ?>
+                            <?php echo $values["name"]; ?>
+                <br>
+                <?php
+                        endforeach;
+                        ?>
+                        <button class='btn btn-success'>Véglegesítés</button><br><button class='btn btn-danger'>Kosár ürítése</button>"><i class="fa fa-shopping-cart"></i> Kosár (<?php echo count($_SESSION["cart"]); ?>)</button>
             </li>
         </ul>
     </div>
